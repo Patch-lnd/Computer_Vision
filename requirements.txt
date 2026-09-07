@@ -1,0 +1,24 @@
+# Object Detection Course
+# Fichier de dépendances Python — installation CPU uniquement (pas de GPU sur cette machine)
+
+# Index supplémentaire pour récupérer les versions CPU de torch/torchvision.
+# Sans cette ligne, pip télécharge par défaut la version avec support CUDA (GPU),
+# beaucoup plus lourde à télécharger (souvent 2-3x plus gros) et inutile sans carte GPU.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+cvzone          # Wrapper simplifié au-dessus d'OpenCV/MediaPipe (détection main/visage/pose facile)
+ultralytics     # Librairie officielle YOLO — entraînement et inférence des modèles de détection
+matplotlib      # Visualisation (courbes de loss, affichage d'images) pendant le debug/entraînement
+numpy           # Calcul matriciel de base — utilisé en interne par quasi toutes les autres libs
+opencv-python<5 # Traitement d'image/vidéo (lecture caméra, dessin de boîtes, resize...)
+Pillow          # Manipulation d'images (PIL) — souvent requis en interne par torchvision/ultralytics
+PyYAML          # Lecture des fichiers de config .yaml (dataset, hyperparamètres pour YOLO)
+requests        # Requêtes HTTP — télécharge les poids de modèles pré-entraînés, datasets, etc.
+scipy           # Calcul scientifique avancé — utilisé par certains algos d'association (tracking)
+torch           # PyTorch — moteur de deep learning (récupère la version CPU via l'index au-dessus)
+torchvision     # Extension PyTorch pour la vision (transformations, modèles pré-entraînés)
+tqdm            # Barres de progression dans le terminal pendant l'entraînement/traitement
+filterpy        # Filtre de Kalman — prédit la position d'un objet entre deux frames (tracking)
+scikit-image    # Traitement d'image scientifique — complète OpenCV pour des opérations plus fines 
+lap             # Résolution du problème d'assignation linéaire — utilisé dans le tracking (SORT/DeepSORT)
+

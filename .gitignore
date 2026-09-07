@@ -1,0 +1,43 @@
+# Environnements virtuels
+venv/
+env/
+.venv/
+ENV/
+
+# Variables d'environnement
+.env
+.env.local
+
+# Cache Python compilé
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Tests / couverture
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Jupyter Notebooks (si t'en utilises)
+.ipynb_checkpoints/
+
+# Cache d'outils
+.mypy_cache/
+.ruff_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Éditeur/IDE
+.vscode/
+.idea/
+*.swp
