@@ -2,6 +2,7 @@
 from ultralytics import YOLO 
 import cv2
 import cvzone #Used to display FPS on the webcam window 
+import math 
 
 capture = cv2.VideoCapture(0)  # capture video from the webcam (0 is usually the default camera)
 capture.set(3, 940)  # set width of the video frame
@@ -21,15 +22,19 @@ while True:
             
             x1,y1,x2,y2 = box.xyxy[0]  # get the coordinates of the bounding box, getting the first element.
             x1,y1,x2,y2 = int(x1), int(y1), int(x2), int(y2)  # convert to integers
-            cv2.rectangle(img,(x1,y1), (x2,y2),(255,0,255),3)  # draw a rectangle around the detected object 
+           # cv2.rectangle(img,(x1,y1), (x2,y2),(255,0,255),3)  # draw a rectangle around the detected object 
 
-            conf = box.conf[0]  # get the confidence score of the detection
+            conf = math.ceil((box.conf[0]*100))/100 # get the confidence score of the detection
             print(conf)  # print the confidence score to the console
+
+            cvzone.putTextRect(img,f'{conf}',(x1,y1-20))
+
+
             
             #cvzone Syntax for Rectangles
             
-            #w, h = x2-x1, y2-y1  # get the coordinates of the bounding box in xywh format
-           #cvzone.cornerRect(img, (x1, y1, w, h))
+            w, h = x2-x1, y2-y1  # get the coordinates of the bounding box in xywh format
+            cvzone.cornerRect(img, (x1, y1, w, h))
             
 
     cv2.imshow("Webcam", img)
