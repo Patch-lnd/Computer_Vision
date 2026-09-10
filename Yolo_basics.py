@@ -18,23 +18,25 @@ while True:
         boxes= r.boxes
         for box in boxes:
             #Opencv Syntax for Rectangles
+            
             x1,y1,x2,y2 = box.xyxy[0]  # get the coordinates of the bounding box, getting the first element.
             x1,y1,x2,y2 = int(x1), int(y1), int(x2), int(y2)  # convert to integers
             cv2.rectangle(img,(x1,y1), (x2,y2),(255,0,255),3)  # draw a rectangle around the detected object 
 
+            conf = box.conf[0]  # get the confidence score of the detection
+            print(conf)  # print the confidence score to the console
+            
             #cvzone Syntax for Rectangles
-            """ 
-            x1, y1, w, h = box.xywh[0]  # get the coordinates of the bounding box in xywh format
-            bbox = int(x1), int(y1), int(w), int(h)  # convert to integers
-            cvzone.cornerRect(img, bbox)
-            """
+            
+            #w, h = x2-x1, y2-y1  # get the coordinates of the bounding box in xywh format
+           #cvzone.cornerRect(img, (x1, y1, w, h))
+            
 
     cv2.imshow("Webcam", img)
     cv2.waitKey(1)  # wait for a key press to close the webcam window
 
 
-
-
+ 
 
 
 
