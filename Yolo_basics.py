@@ -1,7 +1,7 @@
 #RUNNING YOLO WITH A WEBCAM
 from ultralytics import YOLO 
 import cv2
-import cvzone #Used to display FPS on the webcam window 
+import cvzone 
 import math 
 
 capture = cv2.VideoCapture(0)  # capture video from the webcam (0 is usually the default camera)
@@ -27,7 +27,8 @@ while True:
             conf = math.ceil((box.conf[0]*100))/100 # get the confidence score of the detection
             print(conf)  # print the confidence score to the console
 
-            cvzone.putTextRect(img,f'{conf}',(x1,y1-20))
+            cvzone.putTextRect(img,f'{conf}',(max(0,x1),max(35, y1))) #To make sure that the confidence score is not displayed outside the webcam window, we use max() to make sure that the coordinates are not negative.
+            #cvzone.putTextRect(img,f'{conf}',(x1,y1-20)) #Same thing without max() but the confidence score can be displayed outside the webcam window if the object is detected at the top of the window. 
 
 
             
