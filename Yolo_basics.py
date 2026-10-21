@@ -8,7 +8,7 @@ capture = cv2.VideoCapture(0)  # capture video from the webcam (0 is usually the
 capture.set(3, 940)  # set width of the video frame
 capture.set(4, 640)  # set height of the video frame
 
-model = YOLO("yolo11n.pt" )
+model = YOLO("yolo_weights/yolo11n.pt" )
 
 while True:
     success, img = capture.read()  # read a frame from the webcam
