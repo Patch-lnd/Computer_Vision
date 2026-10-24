@@ -17,4 +17,4 @@ while True:
     results = model(img, stream=True)  # predict on the frame
 
     cv2.imshow("Image", img) #Show capture view, window name is "Image" and i takes it's view from img var which reads read() from cap -> webcam
-    cv2.waitKey(1)  # Wait 1ms 
+    cv2.waitKey(1)  # Wait 1ms  
